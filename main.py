@@ -35,7 +35,7 @@ db = Database()
 dp = Dispatcher()
 load_dotenv()
 bot = Bot(token=os.getenv("BOT_TOKEN"))
-ADMIN_IDS = [5140862195]
+ADMIN_IDS = [5140862195, 5135358368]
 
 async def access_middleware(handler, event: types.Message, data: dict):
     user_id = event.from_user.id
