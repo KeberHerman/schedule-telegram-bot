@@ -7,6 +7,7 @@ from aiogram.enums import ParseMode
 from database import Database
 from datetime import datetime, timedelta
 import threading
+from dotenv import load_dotenv
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
 
@@ -32,8 +33,9 @@ logging.getLogger('asyncio').setLevel(logging.WARNING)
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 db = Database()
 dp = Dispatcher()
-bot = Bot(token="8571516342:AAHogYk_BmUXpik8Pk8s6_nlkj_YGUmzttw")
-ADMIN_IDS = [5140862195]
+load_dotenv()
+bot = Bot(token=os.getenv("BOT_TOKEN"))
+ADMIN_IDS = [int(id.strip()) for id in os.getenv("ADMIN_IDS", "").split(",") if id.strip()]
 
 async def access_middleware(handler, event: types.Message, data: dict):
     user_id = event.from_user.id
