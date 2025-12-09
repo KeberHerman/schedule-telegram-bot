@@ -35,7 +35,7 @@ db = Database()
 dp = Dispatcher()
 load_dotenv()
 bot = Bot(token=os.getenv("BOT_TOKEN"))
-ADMIN_IDS = [int(id.strip()) for id in os.getenv("ADMIN_IDS", "").split(",") if id.strip()]
+ADMIN_IDS = [5140862195]
 
 async def access_middleware(handler, event: types.Message, data: dict):
     user_id = event.from_user.id
